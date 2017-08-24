@@ -1,7 +1,7 @@
 # Личный проект «YetiCave» 
 
 * Студент: [Софья Мухина](https://up.htmlacademy.ru/php/2/user/408543).
-* Наставник: `Неизвестно`.
+* Наставник: [Алексей Стулов](https://htmlacademy.ru/profile/id25231).
 
 ---
 
