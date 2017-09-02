@@ -64,7 +64,7 @@ $lots = [
     ]
 ];
 
-$data_page = get_template ('templates/index.php', ['categories' => $categories, 'lots' => $lots]);
-$data_layout = get_template ('templates/layout.php', ['content' => $data_page, 'user_name' => $user_name, 'title_page' => 'Главная']);
+$data_page = get_template ('index', ['categories' => $categories, 'lots' => $lots, 'lot_time_remaining' => $lot_time_remaining ]);
+$data_layout = get_template ('layout', ['content' => $data_page, 'user_name' => $user_name, 'title_page' => 'Главная', 'is_auth' => $is_auth, 'user_avatar' => $user_avatar ]);
 print($data_layout);
 ?>

@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title><?=$data_templates[title_page]; ?></title>
+    <title><?=$title_page; ?></title>
     <link href="css/normalize.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
@@ -26,7 +26,7 @@
                     <img src="<?=$user_avatar; ?>" width="40" height="40" alt="Пользователь">
                 </div>
                 <div class="user-menu__logged">
-                    <p><?=$data_templates[user_name]; ?></p>
+                    <p><?=$user_name; ?></p>
                 </div>
             <?php else : ?>
                 <ul class="user-menu__list">
@@ -43,7 +43,7 @@
 </header>
 
 <main class="container">
-    <?=$data_templates[content]; ?>
+    <?=$content; ?>
 </main>
 
 <footer class="main-footer">
