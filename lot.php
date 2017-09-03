@@ -1,4 +1,15 @@
 <?php
+require ('all_lots.php');
+
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    if (isset($lots[$id])) {
+        $lot_item = $lots[$id];
+    }
+    else {
+        http_response_code(404);
+    };
+};
 
 // ставки пользователей, которыми надо заполнить таблицу
 $bets = [
@@ -86,13 +97,13 @@ function time_bet($ts) {
         </ul>
     </nav>
     <section class="lot-item container">
-        <h2>DC Ply Mens 2016/2017 Snowboard</h2>
+        <h2><?=$lot_item['name']; ?></h2>
         <div class="lot-item__content">
             <div class="lot-item__left">
                 <div class="lot-item__image">
-                    <img src="img/lot-image.jpg" width="730" height="548" alt="Сноуборд">
+                    <img src="<?=$lot_item['img']; ?>" width="730" height="548" alt="<?=$lot_item['name']; ?>">
                 </div>
-                <p class="lot-item__category">Категория: <span>Доски и лыжи</span></p>
+                <p class="lot-item__category">Категория: <span><?=$lot_item['category']; ?></span></p>
                 <p class="lot-item__description">Легкий маневренный сноуборд, готовый дать жару в любом парке, растопив
                     снег
                     мощным щелчкоми четкими дугами. Стекловолокно Bi-Ax, уложенное в двух направлениях, наделяет этот
@@ -112,7 +123,7 @@ function time_bet($ts) {
                     <div class="lot-item__cost-state">
                         <div class="lot-item__rate">
                             <span class="lot-item__amount">Текущая цена</span>
-                            <span class="lot-item__cost">11 500</span>
+                            <span class="lot-item__cost"><?=$lot_item['price']; ?></span>
                         </div>
                         <div class="lot-item__min-cost">
                             Мин. ставка <span>12 000 р</span>
