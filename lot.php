@@ -9,6 +9,7 @@ if (isset($_GET['id'])) {
     }
     else {
         http_response_code(404);
+        header("Location: /pages/404.html");
     };
 };
 
