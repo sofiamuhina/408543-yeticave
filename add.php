@@ -1,8 +1,6 @@
 <?php
 require ('functions.php');
-
-
-
+require ('all_bets.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
@@ -28,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     };
     if ( count($errors) == 0) {
         $lot_item = ['name' => $_POST['lot-name'], 'category' => $_POST['category'], 'price' => $_POST['lot-rate'], 'img' => 'img/' . $filename];
-        $data_page = get_template ('lot', [ 'lot_item' => $lot_item ]);
+        $data_page = get_template ('lot', ['bets' => $bets, 'lot_item' => $lot_item ]);
         $data_layout = get_template ('layout', ['content' => $data_page, 'user_name' => $user_name, 'title_page' => 'Добавить лот', 'is_auth' => $is_auth, 'user_avatar' => $user_avatar ]);
         print($data_layout);
     };  
