@@ -57,7 +57,7 @@
       <textarea id="message" name="message" value="<?=$message; ?>" placeholder="Напишите описание лота"></textarea>
       <span class="form__error"></span>
     </div>
-    <div class="form__item form__item--file"> <!-- form__item--uploaded -->
+    <div class="form__item form__item--file <?php print(check_error($errors, 'photo')); ?>"> <!-- form__item--uploaded -->
       <label>Изображение</label>
       <div class="preview">
         <button class="preview__remove" type="button">x</button>
@@ -70,6 +70,7 @@
         <label for="photo2">
           <span>+ Добавить</span>
         </label>
+        <span class="form__error">Загрузите файл в формате JPEG</span>
       </div>
     </div>
     <div class="form__container-three">

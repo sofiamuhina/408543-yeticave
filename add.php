@@ -2,16 +2,26 @@
 require ('functions.php');
 
 
-if (isset($_FILES['photo'])) {
-    if (is_uploaded_file($_FILES['photo']['tmp_name'])) {
-        $filename = $_FILES['photo']['name'];
-        $file_path = $_SERVER['DOCUMENT_ROOT'] . '/img/'; 
-        $file_url = '/img/' . $filename;
-        move_uploaded_file($_FILES['photo']['tmp_name'], $file_path . $filename); 
-    };
-};
+
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    
+    if (isset($_FILES['photo'])) {
+        if (is_uploaded_file($_FILES['photo']['tmp_name'])) {
+            $finfo = finfo_open(FILEINFO_MIME_TYPE);
+            $filename = $_FILES['photo']['name'];
+            $file_type = finfo_file($finfo, $_FILES['photo']['tmp_name']);
+            if ($file_type !== 'image/jpeg') { 
+                $errors[] = 'photo';
+            }
+            else { 
+                $file_path = $_SERVER['DOCUMENT_ROOT'] . '/img/'; 
+                $file_url = '/img/' . $filename;
+                move_uploaded_file($_FILES['photo']['tmp_name'], $file_path . $filename); 
+            };
+        };
+    };
+    
     foreach ($_POST as $key => $value) {
         if ($value == '') $errors[] = $key;
         if ((($key == 'lot-rate') or ($key == 'lot-step')) and (preg_match('/[^0-9]/', $value))) $errors[] = $key;
