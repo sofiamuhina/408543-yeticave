@@ -2,8 +2,8 @@
 require ('functions.php');
 require ('all_bets.php');
 
+$validate = false;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    
     if (isset($_FILES['photo'])) {
         if (is_uploaded_file($_FILES['photo']['tmp_name'])) {
             $finfo = finfo_open(FILEINFO_MIME_TYPE);
@@ -24,12 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($value == '') $errors[] = $key;
         if ((($key == 'lot-rate') or ($key == 'lot-step')) and (preg_match('/[^0-9]/', $value))) $errors[] = $key;
     };
-    if ( count($errors) == 0) {
-        $lot_item = ['name' => $_POST['lot-name'], 'category' => $_POST['category'], 'price' => $_POST['lot-rate'], 'img' => 'img/' . $filename];
-        $data_page = get_template ('lot', ['bets' => $bets, 'lot_item' => $lot_item ]);
-        $data_layout = get_template ('layout', ['content' => $data_page, 'user_name' => $user_name, 'title_page' => 'Добавить лот', 'is_auth' => $is_auth, 'user_avatar' => $user_avatar ]);
-        print($data_layout);
-    };  
+    if ( count($errors) == 0) $validate = true;
 };
 
 
@@ -42,8 +37,15 @@ function check_error ($errors, $name) {
     return $result;
 };
 
-
-$data_page = get_template ('add_lot', ['errors' => $errors ]);
-$data_layout = get_template ('layout', ['content' => $data_page, 'user_name' => $user_name, 'title_page' => 'Добавить лот', 'is_auth' => $is_auth, 'user_avatar' => $user_avatar ]);
-print($data_layout);
+if ($validate == true) {
+    $lot_item = ['name' => $_POST['lot-name'], 'category' => $_POST['category'], 'price' => $_POST['lot-rate'], 'img' => 'img/' . $filename];
+    $data_page = get_template ('lot', ['bets' => $bets, 'lot_item' => $lot_item ]);
+    $data_layout = get_template ('layout', ['content' => $data_page, 'user_name' => $user_name, 'title_page' => 'Добавить лот', 'is_auth' => $is_auth, 'user_avatar' => $user_avatar ]);
+    print($data_layout);
+}
+else {
+    $data_page = get_template ('add_lot', ['errors' => $errors ]);
+    $data_layout = get_template ('layout', ['content' => $data_page, 'user_name' => $user_name, 'title_page' => 'Добавить лот', 'is_auth' => $is_auth, 'user_avatar' => $user_avatar ]);
+    print($data_layout);
+};
 ?>
