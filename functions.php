@@ -12,4 +12,22 @@ function get_template ($path, $data_templates) {
     };
     return $data_html;
 };
+
+function time_bet($ts) {
+    $now = strtotime('now');
+    $difference_hours = ($now - $ts)/3600;
+    if ($difference_hours > 24) {
+        $time = date('d.m.y', $ts) . ' в ' . date('H.i', $ts);
+    }
+    else {
+        if ($difference_hours < 1) {
+            $time = date('i', ($now - $ts)) . ' минут назад';
+        }
+        else {
+            $time_zone = date('Z'); 
+            $time = date('G', ($now - $ts - $time_zone)) . ' часов назад';
+        }
+    }
+    return $time;
+};
 ?>
