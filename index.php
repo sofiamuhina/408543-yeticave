@@ -2,7 +2,7 @@
 require ('functions.php');
 require ('all_lots.php');
 
-$is_auth = (bool) rand(0, 1);
+if (isset($_SESSION['user'])) $is_auth = true;
 
 $user_name = 'Константин';
 $user_avatar = 'img/user.jpg';

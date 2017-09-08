@@ -28,14 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 };
 
 
-function check_error ($errors, $name) {
-    foreach ($errors as $key) {
-        if ($key == $name) {
-            $result = ' form__item--invalid';
-        };
-    };
-    return $result;
-};
+
 
 if ($validate == true) {
     $lot_item = ['name' => $_POST['lot-name'], 'category' => $_POST['category'], 'price' => $_POST['lot-rate'], 'img' => 'img/' . $filename];

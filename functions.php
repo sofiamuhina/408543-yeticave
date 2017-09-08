@@ -30,4 +30,29 @@ function time_bet($ts) {
     }
     return $time;
 };
+
+
+function check_error ($errors, $name) {
+    foreach ($errors as $key) {
+        if ($key == $name) {
+            $result = ' form__item--invalid';
+        };
+    };
+    return $result;
+};
+
+function verify_user ($email, $password, $users) {
+    $result_user = null;
+    foreach ($users as $user) {
+        if ($email == $user['email']) {
+            $password = password_hash($password, PASSWORD_DEFAULT);
+            if (password_verify ($password, $user['password'])) {
+                $result_user = $user['email'];
+            };
+        };
+    };
+    return $result_user;
+};
+
+
 ?>
