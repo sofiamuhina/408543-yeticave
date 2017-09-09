@@ -54,7 +54,7 @@
     </div>
     <div class="form__item form__item--wide <?php print(check_error($errors, 'message')); ?>">
       <label for="message">Описание</label>
-      <textarea id="message" name="message" value="<?=$message; ?>" placeholder="Напишите описание лота"></textarea>
+      <textarea id="message" name="message" placeholder="Напишите описание лота"><?=$message; ?></textarea>
       <span class="form__error"></span>
     </div>
     <div class="form__item form__item--file <?php print(check_error($errors, 'photo')); ?>"> <!-- form__item--uploaded -->

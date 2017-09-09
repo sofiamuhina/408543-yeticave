@@ -31,7 +31,6 @@ function time_bet($ts) {
     return $time;
 };
 
-
 function check_error ($errors, $name) {
     foreach ($errors as $key) {
         if ($key == $name) {

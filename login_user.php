@@ -8,6 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($value == '') $errors[] = $key;
     };
     if (count($errors) == 0) {
+        session_start();
         $email = $_POST['email'];
         $password = $_POST['password'];
         $user = verify_user ($email, $password, ['users' => $users ]);
