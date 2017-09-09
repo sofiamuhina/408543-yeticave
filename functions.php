@@ -44,7 +44,6 @@ function verify_user ($email, $password, $users) {
     $result_user = null;
     foreach ($users as $user) {
         if ($email == $user['email']) {
-            $password = password_hash($password, PASSWORD_DEFAULT);
             if (password_verify ($password, $user['password'])) {
                 $result_user = $user['email'];
             };

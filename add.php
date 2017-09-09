@@ -29,16 +29,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 
-
-if ($validate == true) {
-    $lot_item = ['name' => $_POST['lot-name'], 'category' => $_POST['category'], 'price' => $_POST['lot-rate'], 'img' => 'img/' . $filename];
-    $data_page = get_template ('lot', ['bets' => $bets, 'lot_item' => $lot_item ]);
-    $data_layout = get_template ('layout', ['content' => $data_page, 'user_name' => $user_name, 'title_page' => 'Добавить лот', 'is_auth' => $is_auth, 'user_avatar' => $user_avatar ]);
-    print($data_layout);
+if (isset($_SESSION['user'])) {
+    if ($validate == true) {
+        $lot_item = ['name' => $_POST['lot-name'], 'category' => $_POST['category'], 'price' => $_POST['lot-rate'], 'img' => 'img/' . $filename];
+        $data_page = get_template ('lot', ['bets' => $bets, 'lot_item' => $lot_item ]);
+        $data_layout = get_template ('layout', ['content' => $data_page, 'user_name' => $user_name, 'title_page' => 'Добавить лот', 'is_auth' => $is_auth, 'user_avatar' => $user_avatar ]);
+        print($data_layout);
+    }
+    else {
+        $data_page = get_template ('add_lot', ['errors' => $errors ]);
+        $data_layout = get_template ('layout', ['content' => $data_page, 'user_name' => $user_name, 'title_page' => 'Добавить лот', 'is_auth' => $is_auth, 'user_avatar' => $user_avatar ]);
+        print($data_layout);
+    };
 }
 else {
-    $data_page = get_template ('add_lot', ['errors' => $errors ]);
-    $data_layout = get_template ('layout', ['content' => $data_page, 'user_name' => $user_name, 'title_page' => 'Добавить лот', 'is_auth' => $is_auth, 'user_avatar' => $user_avatar ]);
-    print($data_layout);
+    http_response_code(403);
+    header("Location: /login_user.php");
 };
+
 ?>
