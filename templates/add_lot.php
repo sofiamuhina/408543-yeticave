@@ -9,24 +9,11 @@
 
   <nav class="nav">
     <ul class="nav__list container">
+     <?php foreach ($categories as $key => $value) : ?>
       <li class="nav__item">
-        <a href="all-lots.html">Доски и лыжи</a>
+        <a href="all-lots.html"><?=$value['name']; ?></a>
       </li>
-      <li class="nav__item">
-        <a href="all-lots.html">Крепления</a>
-      </li>
-      <li class="nav__item">
-        <a href="all-lots.html">Ботинки</a>
-      </li>
-      <li class="nav__item">
-        <a href="all-lots.html">Одежда</a>
-      </li>
-      <li class="nav__item">
-        <a href="all-lots.html">Инструменты</a>
-      </li>
-      <li class="nav__item">
-        <a href="all-lots.html">Разное</a>
-      </li>
+      <?php endforeach; ?>
     </ul>
   </nav>
   <form enctype="multipart/form-data" class="form form--add-lot container <?php if ( count($errors) > 0) print(' form--invalid'); ?>" action="../add.php" method="post"> <!-- form--invalid -->
@@ -42,12 +29,9 @@
         <label for="category">Категория</label>
         <select id="category" name="category">
           <option>Выберите категорию</option>
-          <option value="Доски и лыжи" <?php if ($category == 'Доски и лыжи') print(' selected'); ?> >Доски и лыжи</option>
-          <option value="Крепления"<?php if ($category == 'Крепления') print(' selected'); ?> >Крепления</option>
-          <option value="Ботинки"<?php if ($category == 'Ботинки') print(' selected'); ?> >Ботинки</option>
-          <option value="Одежда"<?php if ($category == 'Одежда') print(' selected'); ?>>Одежда</option>
-          <option value="Инструменты"<?php if ($category == 'Инструменты') print(' selected'); ?>>Инструменты</option>
-          <option value="Разное"<?php if ($category == 'Разное') print(' selected'); ?>>Разное</option>
+          <?php foreach ($categories as $key => $value): ?>
+                <option <?php print(choose_category($value['name'], $category)); ?>><?=$value['name']; ?></option>
+          <?php endforeach; ?>
         </select>
         <span class="form__error"></span>
       </div>

@@ -45,12 +45,17 @@ function verify_user ($email, $password, $users) {
     foreach ($users as $user) {
         if ($email == $user['email']) {
             if (password_verify ($password, $user['password'])) {
-                $result_user = $user['email'];
+                $result_user = $user['name'];
             };
         };
     };
     return $result_user;
 };
 
+function choose_category ($category, $select_category) {
+    $res_string = "value='" . $category . "'";
+    if ($select_category == $category) $res_string = $res_string . ' selected';
+    return $res_string;
+};
 
 ?>

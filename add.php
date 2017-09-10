@@ -1,6 +1,6 @@
 <?php
 require ('functions.php');
-require ('all_bets.php');
+require ('all_data.php');
 session_start();
 $validate = false;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -37,14 +37,14 @@ if (isset($_SESSION['user'])) {
         print($data_layout);
     }
     else {
-        $data_page = get_template ('add_lot', ['errors' => $errors ]);
+        $data_page = get_template ('add_lot', ['errors' => $errors, 'categories' => $categories ]);
         $data_layout = get_template ('layout', ['content' => $data_page, 'user_name' => $user_name, 'title_page' => 'Добавить лот', 'is_auth' => $is_auth, 'user_avatar' => $user_avatar ]);
         print($data_layout);
     };
 }
 else {
     http_response_code(403);
-    header("Location: /login_user.php");
+    header("Location: /pages/403.html");
 };
 
 ?>
