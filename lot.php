@@ -2,7 +2,7 @@
 require ('functions.php');
 require ('all_lots.php');
 require ('all_bets.php');
-
+session_start();
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     if (isset($lots[$id])) {
@@ -15,6 +15,6 @@ if (isset($_GET['id'])) {
 };
 
 $data_page = get_template ('lot', ['bets' => $bets, 'lot_item' => $lot_item ]);
-$data_layout = get_template ('layout', ['content' => $data_page, 'user_name' => $user_name, 'title_page' => $lot_item['name'], 'is_auth' => $is_auth, 'user_avatar' => $user_avatar ]);
+$data_layout = get_template ('layout', ['content' => $data_page, 'user_name' => $user_name, 'title_page' => $lot_item['name'], 'user_avatar' => $user_avatar ]);
 print($data_layout);
 ?>

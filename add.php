@@ -1,7 +1,7 @@
 <?php
 require ('functions.php');
 require ('all_bets.php');
-
+session_start();
 $validate = false;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_FILES['photo'])) {

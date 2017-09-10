@@ -1,14 +1,13 @@
 <?php
 require ('functions.php');
 require ('userdata.php');
-
+session_start();
 $verify = true;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     foreach ($_POST as $key => $value) {
         if ($value == '') $errors[] = $key;
     };
     if (count($errors) == 0) {
-        session_start();
         $email = $_POST['email'];
         $password = $_POST['password'];
         $user = verify_user ($email, $password, $users );

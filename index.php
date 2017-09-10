@@ -1,7 +1,7 @@
 <?php
 require ('functions.php');
 require ('all_lots.php');
-
+session_start();
 $user_name = 'Константин';
 $user_avatar = 'img/user.jpg';
 
