@@ -2,8 +2,6 @@
 require ('functions.php');
 require ('all_lots.php');
 
-if (isset($_SESSION['user'])) $is_auth = true;
-
 $user_name = 'Константин';
 $user_avatar = 'img/user.jpg';
 
@@ -28,6 +26,6 @@ $lot_time_remaining = date("H.i", ($tomorrow - $now - $time_zone));
 $categories = ["Доски и лыжи", "Крепления", "Ботинки", "Одежда", "Инструменты", "Разное"];
 
 $data_page = get_template ('index', ['categories' => $categories, 'lots' => $lots, 'lot_time_remaining' => $lot_time_remaining ]);
-$data_layout = get_template ('layout', ['content' => $data_page, 'user_name' => $user_name, 'title_page' => 'Главная', 'is_auth' => $is_auth, 'user_avatar' => $user_avatar ]);
+$data_layout = get_template ('layout', ['content' => $data_page, 'user_name' => $user_name, 'title_page' => 'Главная', 'user_avatar' => $user_avatar ]);
 print($data_layout);
 ?>
