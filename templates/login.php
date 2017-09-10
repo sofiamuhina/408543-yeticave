@@ -16,7 +16,7 @@
     </div>
     <div class="form__item form__item--last <?php print(check_error($errors, 'password')); if ($verify_user == false) print(' form__item--invalid'); ?>">
       <label for="password">Пароль*</label>
-      <input id="password" type="text" name="password" <?php if ($verify_user == false) print('value="Вы ввели неверный пароль"'); ?> placeholder="Введите пароль">
+      <input id="password" type="password" name="password" <?php if ($verify_user == false) print('value="Вы ввели неверный пароль"'); ?> placeholder="Введите пароль">
       <span class="form__error">Введите пароль</span>
     </div>
     <button type="submit" class="button">Войти</button>

@@ -25,6 +25,6 @@ $lot_time_remaining = date("H.i", ($tomorrow - $now - $time_zone));
 
 
 $data_page = get_template ('index', ['categories' => $categories, 'lots' => $lots, 'lot_time_remaining' => $lot_time_remaining ]);
-$data_layout = get_template ('layout', ['content' => $data_page, 'user_name' => $user_name, 'title_page' => 'Главная', 'user_avatar' => $user_avatar ]);
+$data_layout = get_template ('layout', ['content' => $data_page, 'title_page' => 'Главная', 'user_avatar' => $user_avatar, 'class' => 'container']);
 print($data_layout);
 ?>

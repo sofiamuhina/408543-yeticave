@@ -26,8 +26,8 @@ function time_bet($ts) {
         else {
             $time_zone = date('Z'); 
             $time = date('G', ($now - $ts - $time_zone)) . ' часов назад';
-        }
-    }
+        };
+    };
     return $time;
 };
 
