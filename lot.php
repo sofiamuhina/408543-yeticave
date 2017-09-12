@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $bet = ['id' => $id, 'cost' => $cost, 'time' => $time ];
         $bet = json_encode($bet);
         $tomorrow = strtotime('tomorrow midnight');
-        $name = 'bet_' . $_GET['id'];
+        $name = 'bet_' . $id;
         setcookie($name, $bet, $tomorrow, '/');
         header("Location: /mylots.php");
     }
