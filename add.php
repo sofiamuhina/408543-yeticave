@@ -22,7 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     foreach ($_POST as $key => $value) {
         if ($value == '') $errors[] = $key;
-        if ((($key == 'lot-rate') or ($key == 'lot-step')) and (preg_match('/[^0-9]/', $value))) $errors[] = $key;
+        if ((($key == 'lot-rate') or ($key == 'lot-step')) and ((preg_match('/[^0-9]/', $value)) or ($value <= 0))) $errors[] = $key;
+        if (($key == 'lot-date') and !(valid_date($value))) $errors[] = $key;
     };
     if ( count($errors) == 0) {
         $validate = true;

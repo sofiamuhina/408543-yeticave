@@ -28,7 +28,7 @@
             </div>
             <div class="lot-item__right">
                
-                <?php if (isset($_SESSION['user'])) : ?>
+                <?php if ($add_bet == true) : ?>
                     <div class="lot-item__state">
                         <div class="lot-item__timer timer">
                             10:54:12

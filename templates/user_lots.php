@@ -14,7 +14,7 @@
       <tr class="rates__item">
         <td class="rates__info">
           <div class="rates__img">
-            <img src="../img/rate1.jpg" width="54" height="40" alt="Сноуборд">
+            <img src="../img/rate<?=$value['id']+1;?>.jpg" width="54" height="40" alt="Сноуборд">
           </div>
           <h3 class="rates__title"><a href="lot.html"><?php foreach($lots as $number_lot => $lot_value) {if ($number_lot == $value['id']) { print($lot_value['name']); ; ?></a></h3>
         </td>
