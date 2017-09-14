@@ -11,7 +11,8 @@ if (isset($_GET['id'])) {
         http_response_code(404);
         header("Location: /pages/404.html");
     };
-};
+}
+else header("Location: /pages/search.html");
 
 $error = false;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
