@@ -12,7 +12,7 @@ if (isset($_GET['id'])) {
         header("Location: /pages/404.html");
     };
 }
-else header("Location: /pages/search.html");
+else header("Location: /search.php");
 
 $error = false;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

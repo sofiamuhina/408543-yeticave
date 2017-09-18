@@ -3,6 +3,7 @@ require ('functions.php');
 require ('all_data.php');
 session_start();
 
+$get_bets = [];
 foreach ($lots as $number_lot => $value) {
     $name_cookie = 'bet_' . $number_lot;
     if (isset($_COOKIE[$name_cookie])) {

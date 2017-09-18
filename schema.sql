@@ -2,7 +2,8 @@ CREATE DATABASE yeti;
 USE yeti;
 CREATE TABLE categories (
     id TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    name CHAR(32) UNIQUE
+    name CHAR(32) UNIQUE,
+    class CHAR(32) UNIQUE
 );
 
 CREATE INDEX category ON categories(id);
@@ -13,8 +14,9 @@ CREATE TABLE lots (
     time_create DATETIME,
     time_close DATE,
     description TEXT,
-    img CHAR(32),
+    img CHAR(128),
     price_start INT UNSIGNED,
+    price_cur INT UNSIGNED,
     bet_step INT UNSIGNED,
     count_fav INT UNSIGNED,
     id_creator INT UNSIGNED,
@@ -46,15 +48,11 @@ CREATE TABLE users (
     time_add DATETIME,
     mail CHAR(128) UNIQUE,
     name CHAR(255),
-    pass_hash CHAR(32),
-    avatar CHAR(32),
-    contacts TEXT,
-    id_lot INT UNSIGNED,
-    id_bet INT UNSIGNED
+    pass_hash CHAR(64),
+    avatar CHAR(128),
+    contacts TEXT
 );
 
 CREATE INDEX user_id ON users(id);
-CREATE INDEX user_lot ON users(id_lot);
-CREATE INDEX user_bet ON users(id_bet);
 CREATE INDEX user_mail ON users(mail);
 CREATE INDEX user_pass ON users(pass_hash);

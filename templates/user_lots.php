@@ -16,7 +16,7 @@
           <div class="rates__img">
             <img src="../img/rate<?=$value['id']+1;?>.jpg" width="54" height="40" alt="Сноуборд">
           </div>
-          <h3 class="rates__title"><a href="lot.html"><?php foreach($lots as $number_lot => $lot_value) {if ($number_lot == $value['id']) { print($lot_value['name']); ; ?></a></h3>
+          <h3 class="rates__title"><a href="lot.php?id=<?=$value['id']; ?>"><?php foreach($lots as $number_lot => $lot_value) {if ($number_lot == $value['id']) { print($lot_value['name']); ; ?></a></h3>
         </td>
         <td class="rates__category">
           <?php print($lot_value['category']); };}; ?>
