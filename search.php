@@ -1,6 +1,8 @@
 <?php
 require ('functions.php');
 require ('all_data.php');
+require ('mysql_helper.php');
+require ('init.php');
 session_start();
 
 $data_page = get_template ('search', []);

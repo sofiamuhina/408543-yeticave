@@ -2,6 +2,8 @@
 require ('functions.php');
 require ('userdata.php');
 require ('all_data.php');
+require ('mysql_helper.php');
+require ('init.php');
 session_start();
 $verify = true;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
