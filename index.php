@@ -25,7 +25,8 @@ $now = strtotime('now');
 $time_zone = date('Z'); 
 $lot_time_remaining = date("H.i", ($tomorrow - $now - $time_zone));
 
+print(db_insert($connect, 'lots', ['name' => 'Union Contact Pro', 'id_category' => 5, 'time_create' => '2018-09-11']));
 $data_page = get_template ('index', ['categories' => $categories, 'lots' => $lots, 'lot_time_remaining' => $lot_time_remaining ]);
-$data_layout = get_template ('layout', ['content' => $data_page, 'title_page' => 'Главная', 'user_avatar' => $user_avatar, 'class' => 'container']);
+$data_layout = get_template ('layout', ['content' => $data_page, 'categories' => $categories, 'title_page' => 'Главная', 'user_avatar' => $user_avatar, 'class' => 'container']);
 print($data_layout);
 ?>

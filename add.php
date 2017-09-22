@@ -40,12 +40,12 @@ if (isset($_SESSION['user'])) {
     if ($validate == true) {
         $lot_item = ['name' => $name_lot, 'category' => $_POST['category'], 'price' => $_POST['lot-rate'], 'img' => 'img/' . $filename];
         $data_page = get_template ('lot', ['bets' => $bets, 'lot_item' => $lot_item, 'categories' => $categories ]);
-        $data_layout = get_template ('layout', ['content' => $data_page, 'user_name' => $user_name, 'title_page' => 'Добавить лот',  'user_avatar' => $user_avatar ]);
+        $data_layout = get_template ('layout', ['content' => $data_page, 'categories' => $categories, 'user_name' => $user_name, 'title_page' => 'Добавить лот',  'user_avatar' => $user_avatar ]);
         print($data_layout);
     }
     else {
         $data_page = get_template ('add_lot', ['errors' => $errors, 'categories' => $categories ]);
-        $data_layout = get_template ('layout', ['content' => $data_page, 'user_name' => $user_name, 'title_page' => 'Добавить лот', 'user_avatar' => $user_avatar ]);
+        $data_layout = get_template ('layout', ['content' => $data_page, 'categories' => $categories, 'user_name' => $user_name, 'title_page' => 'Добавить лот', 'user_avatar' => $user_avatar ]);
         print($data_layout);
     };
 }

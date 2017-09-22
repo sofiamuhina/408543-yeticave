@@ -1,4 +1,5 @@
 <?php 
+
    $lots = [
     0 => [
         'name' => '2014 Rossignol District Snowboard',
@@ -38,14 +39,6 @@
     ]
 ];
 
-$categories = [
-    ['name' => "Доски и лыжи", 'class' => 'boards'],
-    ['name' => "Крепления", 'class' => 'attachment'],
-    ['name' => "Ботинки", 'class' => 'boots'],
-    ['name' => "Одежда", 'class' => 'clothing'],
-    ['name' => "Инструменты", 'class' => 'tools'],
-    ['name' => "Разное", 'class' => 'other']
-];
 
 $bets = [
     ['name' => 'Иван', 'price' => 11500, 'ts' => strtotime('-' . rand(1, 50) .' minute')],

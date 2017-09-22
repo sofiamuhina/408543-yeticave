@@ -79,14 +79,20 @@ function db_select($connect, $query, $values = [] ) {
 };
 
 function db_insert($connect, $table, $values) {
-    $sql_values = ' ';
+    $sql_key = ' ';
+    $sql_value = [];
     foreach ($values as $key => $value) {
-        $sql_values = $sql_values . $key . "='" . $value . "',";
+        $sql_key = $sql_key . $key . ',';
+        $sql_value[] = $value;
     };
-    $sql_values = substr ($sql_values, 0, -1);
-    $sql_query = 'INSERT into ' . $table . ' SET ' . $sql_values;
+    $sql_key = substr ($sql_key, 0, -1);
+    $count_values = count($sql_value);
+    $sql_quest = ' ';
+    $sql_quest = str_repeat(' ?,', $count_values);
+    $sql_quest = substr ($sql_quest, 0, -1);
+    $sql_query = 'INSERT into ' . $table. '(' . $sql_key . ')' . ' VALUES (' . $sql_quest . ')';
     
-    $sql_prepare = db_get_prepare_stmt ($connect, $sql_query, $values);
+    $sql_prepare = db_get_prepare_stmt ($connect, $sql_query, $sql_value);
     $last_key = false;
     if ($sql_prepare != false) {
         mysqli_stmt_execute($sql_prepare);

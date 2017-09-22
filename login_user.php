@@ -27,7 +27,7 @@ if (isset($_SESSION['user']) and ($verify == true)) {
 }
 else {
     $data_page = get_template ('login', ['errors' => $errors, 'verify_user' => $verify, 'categories' => $categories ]);
-    $data_layout = get_template ('layout', ['content' => $data_page, 'title_page' => 'Вход', 'user_avatar' => $user_avatar ]);
+    $data_layout = get_template ('layout', ['content' => $data_page, 'categories' => $categories, 'title_page' => 'Вход', 'user_avatar' => $user_avatar ]);
     print($data_layout);
 };
 ?>
