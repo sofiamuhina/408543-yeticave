@@ -2,19 +2,19 @@
         <ul class="nav__list container">
           <?php foreach ($categories as $key => $value) : ?>
           <li class="nav__item">
-            <a href="all-lots.html"><?=$value['name']; ?></a>
+            <a href="all-lots.html"><?=$value['name_cat']; ?></a>
           </li>
           <?php endforeach; ?>
         </ul>
     </nav>
     <section class="lot-item container">
-        <h2><?=$lot_item['name']; ?></h2>
+        <h2><?=$lot_item['name_lot']; ?></h2>
         <div class="lot-item__content">
             <div class="lot-item__left">
                 <div class="lot-item__image">
-                    <img src="<?=$lot_item['img']; ?>" width="730" height="548" alt="<?=$lot_item['name']; ?>">
+                    <img src="<?=$lot_item['img']; ?>" width="730" height="548" alt="<?=$lot_item['name_lot']; ?>">
                 </div>
-                <p class="lot-item__category">Категория: <span><?=$lot_item['category']; ?></span></p>
+                <p class="lot-item__category">Категория: <span><?=$lot_item['name_cat']; ?></span></p>
                 <p class="lot-item__description">Легкий маневренный сноуборд, готовый дать жару в любом парке, растопив
                     снег
                     мощным щелчкоми четкими дугами. Стекловолокно Bi-Ax, уложенное в двух направлениях, наделяет этот
@@ -36,7 +36,7 @@
                         <div class="lot-item__cost-state">
                             <div class="lot-item__rate">
                                 <span class="lot-item__amount">Текущая цена</span>
-                                <span class="lot-item__cost"><?=$lot_item['price']; ?></span>
+                                <span class="lot-item__cost"><?=$lot_item['price_cur']; ?></span>
                             </div>
                             <div class="lot-item__min-cost">
                                 Мин. ставка <span>12 000 р</span>

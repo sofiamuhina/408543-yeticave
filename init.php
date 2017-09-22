@@ -10,6 +10,7 @@ if ($connect == false) {
     exit();
 };
 
-$categories = db_select($connect, 'SELECT name, class FROM categories');
+$categories = db_select($connect, 'SELECT name_cat, class FROM categories');
+$lots = db_select($connect, 'SELECT name_lot, price_start, price_cur, img, name_cat  FROM lots l JOIN categories c ON l.id_category = c.id WHERE time_close >  STR_TO_DATE(now(), "%Y-%m-%d")');
 
 ?>

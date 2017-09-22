@@ -2,7 +2,7 @@ CREATE DATABASE yeti;
 USE yeti;
 CREATE TABLE categories (
     id TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    name CHAR(32) UNIQUE,
+    name_cat CHAR(32) UNIQUE,
     class CHAR(32) UNIQUE
 );
 
@@ -10,7 +10,7 @@ CREATE INDEX category ON categories(id);
 
 CREATE TABLE lots (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    name CHAR(128),
+    name_lot CHAR(128),
     time_create DATETIME,
     time_close DATE,
     description TEXT,
@@ -28,7 +28,7 @@ CREATE INDEX lot_id ON lots(id);
 CREATE INDEX lot_creator ON lots(id_creator);
 CREATE INDEX lot_winner ON lots(id_winner);
 CREATE INDEX lot_category ON lots(id_category);
-CREATE INDEX lot_name ON lots(name);
+CREATE INDEX lot_name ON lots(name_lot);
 
 
 CREATE TABLE bets (

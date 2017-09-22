@@ -11,7 +11,7 @@
     <ul class="nav__list container">
      <?php foreach ($categories as $key => $value) : ?>
       <li class="nav__item">
-        <a href="all-lots.html"><?=$value['name']; ?></a>
+        <a href="all-lots.html"><?=$value['name_cat']; ?></a>
       </li>
       <?php endforeach; ?>
     </ul>
@@ -30,7 +30,7 @@
         <select id="category" name="category">
           <option>Выберите категорию</option>
           <?php foreach ($categories as $key => $value): ?>
-                <option <?php print(choose_category($value['name'], $category)); ?>><?=$value['name']; ?></option>
+                <option <?php print(choose_category($value['name_cat'], $category)); ?>><?=$value['name_cat']; ?></option>
           <?php endforeach; ?>
         </select>
         <span class="form__error"></span>
