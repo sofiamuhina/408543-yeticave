@@ -62,4 +62,52 @@ function valid_date($date) {
     return (preg_match('/^(\\d{2})\\.(\\d{2})\\.(\\d{4})$/', $date, $m) and checkdate($m[2], $m[1], $m[3]));
 };
 
+
+function db_select($connect, $query, $values = [] ) {
+    $sql_prepare = db_get_prepare_stmt ($connect, $query, $values);
+    $get_data = [];
+    if ($sql_prepare != false) {
+        mysqli_stmt_execute($sql_prepare);
+        $sql_res = mysqli_stmt_get_result($sql_prepare);
+        mysqli_stmt_close($sql_prepare);
+        while ($row = mysqli_fetch_array($sql_res, MYSQLI_ASSOC)) {
+            $get_data[] = $row;
+        };    
+    };
+    
+    return $get_data;
+};
+
+function db_insert($connect, $table, $values) {
+    $sql_values = ' ';
+    foreach ($values as $key => $value) {
+        $sql_values = $sql_values . $key . "='" . $value . "',";
+    };
+    $sql_values = substr ($sql_values, 0, -1);
+    $sql_query = 'INSERT into ' . $table . ' SET ' . $sql_values;
+    
+    $sql_prepare = db_get_prepare_stmt ($connect, $sql_query, $values);
+    $last_key = false;
+    if ($sql_prepare != false) {
+        mysqli_stmt_execute($sql_prepare);
+        $sql_res = mysqli_stmt_get_result($sql_prepare);
+        mysqli_stmt_close($sql_prepare);
+        $last_key = mysqli_insert_id ($connect);
+    };
+    
+    return $last_key;
+};
+
+function db_query($connect, $query, $values = [] ) {
+    $sql_prepare = db_get_prepare_stmt ($connect, $query, $values);
+    $check_error = false;
+    if ($sql_prepare != false) {
+        mysqli_stmt_execute($sql_prepare);
+        $sql_res = mysqli_stmt_get_result($sql_prepare);
+        mysqli_stmt_close($sql_prepare);
+        $check_error = true;
+    };
+    
+    return $check_error;
+};
 ?>
