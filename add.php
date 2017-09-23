@@ -31,6 +31,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $validate = true;
         $name_lot = htmlspecialchars($_POST['lot-name']);
         $desc_lot = htmlspecialchars($_POST['message']);
+        $date_close = date('Y-m-d', strtotime($_POST['lot-date']));
+        $date_create = date('Y-m-d');
+        
+        foreach($categories as $key => $value) {
+            if ($value['name_cat'] == $_POST['category']) $id_category = $value['id'];
+        };
     };
 };
 
@@ -38,12 +44,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 if (isset($_SESSION['user'])) {
     if ($validate == true) {
-        $lot_item = ['name' => $name_lot, 'category' => $_POST['category'], 'price' => $_POST['lot-rate'], 'img' => 'img/' . $filename];
+        $new_lot = db_insert($connect, 'lots', ['name_lot' => $name_lot, 'description' => $desc_lot, 'price_start' => $_POST['lot-rate'], 'bet_step' =>$_POST['lot-step'], 'time_close' => $date_close, 'time_create' => $date_create, 'img' => $file_url, 'id_category' => $id_category]);
+
+        $lot_item = ['name_lot' => $name_lot, 'name_cat' => $_POST['category'], 'price_cur' => $_POST['lot-rate'], 'img' => 'img/' . $filename];
         $data_page = get_template ('lot', ['bets' => $bets, 'lot_item' => $lot_item, 'categories' => $categories ]);
         $data_layout = get_template ('layout', ['content' => $data_page, 'categories' => $categories, 'user_name' => $user_name, 'title_page' => 'Добавить лот',  'user_avatar' => $user_avatar ]);
         print($data_layout);
     }
     else {
+        
         $data_page = get_template ('add_lot', ['errors' => $errors, 'categories' => $categories ]);
         $data_layout = get_template ('layout', ['content' => $data_page, 'categories' => $categories, 'user_name' => $user_name, 'title_page' => 'Добавить лот', 'user_avatar' => $user_avatar ]);
         print($data_layout);
