@@ -4,13 +4,12 @@ require ('all_data.php');
 require ('mysql_helper.php');
 require ('init.php');
 session_start();
+$lot_item = [];
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $all_lots = db_select($connect, 'SELECT id FROM lots');
-    if (isset($all_lots[$id-1])) {
-        $lot_item = db_select($connect, 'SELECT * FROM lots WHERE id = ?', [$id]);
-    }
-    else {
+    $lot_item = db_select($connect, 'SELECT *  FROM lots WHERE id = ?', ['id' => $id]);
+    extract ($lot_item, EXTR_SKIP);
+    if (!(isset($lot_item))) {
         http_response_code(404);
         header("Location: /pages/404.html");
     };

@@ -5,6 +5,7 @@ require ('mysql_helper.php');
 require ('init.php');
 session_start();
 $validate = false;
+$file_url = '';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_FILES['photo'])) {
         if (is_uploaded_file($_FILES['photo']['tmp_name'])) {

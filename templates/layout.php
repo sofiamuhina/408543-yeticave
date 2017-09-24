@@ -23,7 +23,7 @@
         <nav class="user-menu">
             <?php if (isset($_SESSION['user'])) : ?>
                 <div class="user-menu__image"> 
-                    <img src="<?=$user_avatar; ?>" width="40" height="40" alt="Пользователь"> 
+                    <img src="<?=$_SESSION['user']['img']; ?>" width="40" height="40" alt="Пользователь"> 
                 </div> 
                 <div class="user-menu__logged"> 
                     <p><?=$_SESSION['user']['name']; ?></p> 

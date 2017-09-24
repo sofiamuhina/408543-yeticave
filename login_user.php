@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $password = $_POST['password'];
         $user = verify_user ($email, $password, $users );
         if ($user != null) {
-            $_SESSION['user'][] = $user;
+            $_SESSION['user'] = $user;
             header("Location: /index.php");
         }
         else $verify = false;
