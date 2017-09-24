@@ -1,7 +1,6 @@
 <?php
 require ('functions.php');
 require ('userdata.php');
-require ('all_data.php');
 require ('mysql_helper.php');
 require ('init.php');
 session_start();
@@ -15,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $password = $_POST['password'];
         $user = verify_user ($email, $password, $users );
         if ($user != null) {
-            $_SESSION['user'] = $user;
+            $_SESSION['user'][] = $user;
             header("Location: /index.php");
         }
         else $verify = false;

@@ -41,11 +41,11 @@ function check_error ($errors, $name) {
 };
 
 function verify_user ($email, $password, $users) {
-    $result_user = null;
+    $result_user = [];
     foreach ($users as $user) {
-        if ($email == $user['email']) {
-            if (password_verify ($password, $user['password'])) {
-                $result_user = $user['name'];
+        if ($email == $user['mail']) {
+            if (password_verify ($password, $user['pass_hash'])) {
+                $result_user = $user;
             };
         };
     };

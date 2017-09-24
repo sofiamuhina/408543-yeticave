@@ -36,7 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 $add_bet = false;
 if ((isset($_SESSION['user'])) and !(isset($_COOKIE[$name = 'bet_' . $id]))) $add_bet = true;
 
-print_r($all_lots);
 $data_page = get_template ('lot', ['bets' => $bets, 'lot_item' => $lot_item, 'id' =>$id, 'add_bet' => $add_bet, 'error' => $error, 'categories' => $categories]);
 $data_layout = get_template ('layout', ['content' => $data_page, 'categories' => $categories, 'user_name' => $user_name, 'title_page' => $lot_item['name'], 'user_avatar' => $user_avatar ]);
 print($data_layout);
