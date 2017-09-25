@@ -6,13 +6,12 @@ session_start();
 
 $validate = false;
 $file_url = '';
+$errors = [];
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
        if (isset($_FILES['photo'])) {
         if (is_uploaded_file($_FILES['photo']['tmp_name'])) {
-            $finfo = finfo_open(FILEINFO_MIME_TYPE);
             $filename = $_FILES['photo']['name'];
-            $file_type = finfo_file($finfo, $_FILES['photo']['tmp_name']);
-            if ($file_type !== 'image/jpeg') { 
+            if ((mime_content_type($_FILES['photo']['tmp_name'])) != 'image/jpeg') { 
                 $errors[] = 'photo';
             }
             else { 
@@ -24,11 +23,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     };
     
     foreach ($_POST as $key => $value) {
-        if ($value == '') $errors[] = $key;
-        if (($key == 'email') and ((filter_var($value, FILTER_VALIDATE_EMAIL)) == false)) $errors[] = $key;
+        if ($value == '') {
+            $errors[] = $key;
+        };
+        if (($key == 'email') and ((filter_var($value, FILTER_VALIDATE_EMAIL)) == false)) {
+            $errors[] = $key;
+        };
     };
     foreach ($users as $key => $value) {
-        if ($value['mail'] == $_POST['email']) $errors[] = 'email';
+        if ($value['mail'] == $_POST['email']) {
+            $errors[] = 'email';
+        };
     };
     if ( count($errors) == 0) {
         $validate = true;

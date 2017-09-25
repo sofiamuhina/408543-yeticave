@@ -14,7 +14,7 @@
         <a class="main-header__logo" <?php if ($title_page != 'Главная') print ('href="../index.php"'); ?>>
             <img src="img/logo.svg" width="160" height="39" alt="Логотип компании YetiCave">
         </a>
-        <form class="main-header__search" method="get" action="https://echo.htmlacademy.ru">
+        <form class="main-header__search" method="get" name='search' action="search.php">
             <input type="search" name="search" placeholder="Поиск лота">
             <input class="main-header__search-btn" type="submit" name="find" value="Найти">
         </form>
@@ -23,7 +23,7 @@
         <nav class="user-menu">
             <?php if (isset($_SESSION['user'])) : ?>
                 <div class="user-menu__image"> 
-                    <img src="<?=$_SESSION['user']['img']; ?>" width="40" height="40" alt="Пользователь"> 
+                    <img src="<?=$_SESSION['user']['avatar']; ?>" width="40" height="40" alt="Пользователь"> 
                 </div> 
                 <div class="user-menu__logged"> 
                     <p><?=$_SESSION['user']['name']; ?></p> 

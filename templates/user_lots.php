@@ -1,4 +1,4 @@
- <nav class="nav">
+   <nav class="nav">
     <ul class="nav__list container">
       <?php foreach ($categories as $key => $value) : ?>
       <li class="nav__item">
@@ -14,18 +14,18 @@
       <tr class="rates__item">
         <td class="rates__info">
           <div class="rates__img">
-            <img src="../img/rate<?=$value['id']+1;?>.jpg" width="54" height="40" alt="Сноуборд">
+            <img src="<?=$value['img'];?>" width="54" height="40" alt="<?=$value['name_lot']; ?>">
           </div>
-          <h3 class="rates__title"><a href="lot.php?id=<?=$value['id']; ?>"><?php foreach($lots as $number_lot => $lot_value) {if ($number_lot == $value['id']) { print($lot_value['name']); ; ?></a></h3>
+          <h3 class="rates__title"><a href="lot.php?id=<?=$value['id']; ?>"><?=$value['name_lot']; ?></a></h3>
         </td>
         <td class="rates__category">
-          <?php print($lot_value['category']); };}; ?>
+          <?php print($value['category']);  ?>
         </td>
         <td class="rates__timer">
           <div class="timer timer--finishing">07:13:34</div>
         </td>
         <td class="rates__price">
-          <?=$value['cost']; ?>
+          <?=$value['price']; ?>
         </td>
         <td class="rates__time">
           <?php print(time_bet($value['time'])); ?>

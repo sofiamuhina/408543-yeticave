@@ -1,11 +1,17 @@
 <?php
 require ('functions.php');
-require ('all_data.php');
 require ('mysql_helper.php');
 require ('init.php');
 session_start();
 
-$data_page = get_template ('search', []);
-$data_layout = get_template ('layout', ['content' => $data_page, 'title_page' => 'Поиск', 'user_avatar' => $user_avatar ]);
+$search = [];
+if (isset($_GET['search'])) {
+    $search = $_GET['search'];
+    $search = mysqli_real_escape_string($connect, $search );
+    $search_lot = db_select($connect, "SELECT * FROM lots JOIN categories ON id_category = categories.id WHERE name_lot LIKE '%$search%' OR description LIKE '%$search%' ", []);
+};
+
+$data_page = get_template ('search', ['categories' => $categories, 'lots' => $search_lot]);
+$data_layout = get_template ('layout', ['content' => $data_page, 'title_page' => 'Поиск', 'categories' => $categories ]);
 print($data_layout);
 ?>

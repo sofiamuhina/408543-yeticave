@@ -1,13 +1,14 @@
 <?php
 require ('functions.php');
-require ('userdata.php');
 require ('mysql_helper.php');
 require ('init.php');
 session_start();
 $verify = true;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     foreach ($_POST as $key => $value) {
-        if ($value == '') $errors[] = $key;
+        if ($value == '') {
+            $errors[] = $key;
+        };
     };
     if (count($errors) == 0) {
         $email = $_POST['email'];
@@ -17,7 +18,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['user'] = $user;
             header("Location: /index.php");
         }
-        else $verify = false;
+        else {
+            $verify = false;
+        };
     };
 };
 
@@ -26,7 +29,7 @@ if (isset($_SESSION['user']) and ($verify == true)) {
 }
 else {
     $data_page = get_template ('login', ['errors' => $errors, 'verify_user' => $verify, 'categories' => $categories ]);
-    $data_layout = get_template ('layout', ['content' => $data_page, 'categories' => $categories, 'title_page' => 'Вход', 'user_avatar' => $user_avatar ]);
+    $data_layout = get_template ('layout', ['content' => $data_page, 'categories' => $categories, 'title_page' => 'Вход']);
     print($data_layout);
 };
 ?>

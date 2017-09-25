@@ -7,7 +7,7 @@
       <?php endforeach; ?>
     </ul>
   </nav>
-  <form class="form container <?php if ( count($errors) > 0) print(' form--invalid'); ?>" action="../sign_up.php" method="post" > <!-- form--invalid -->
+  <form enctype="multipart/form-data" class="form container <?php if ( count($errors) > 0) print(' form--invalid'); ?>" action="../sign_up.php" method="post" > <!-- form--invalid -->
     <h2>Регистрация нового аккаунта</h2>
     <div class="form__item <?php print(check_error($errors, 'email')); ?>"> <!-- form__item--invalid -->
       <label for="email">E-mail*</label>

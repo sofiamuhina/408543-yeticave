@@ -1,11 +1,8 @@
 <?php
 require ('functions.php');
-require ('all_data.php');
 require ('mysql_helper.php');
 require ('init.php');
 session_start();
-$user_name = 'Константин';
-$user_avatar = 'img/user.jpg';
 
 // устанавливаем часовой пояс в Московское время
 date_default_timezone_set('Europe/Moscow');
@@ -26,6 +23,6 @@ $time_zone = date('Z');
 $lot_time_remaining = date("H.i", ($tomorrow - $now - $time_zone));
 
 $data_page = get_template ('index', ['categories' => $categories, 'lots' => $lots, 'lot_time_remaining' => $lot_time_remaining ]);
-$data_layout = get_template ('layout', ['content' => $data_page, 'categories' => $categories, 'title_page' => 'Главная', 'user_avatar' => $user_avatar, 'class' => 'container']);
+$data_layout = get_template ('layout', ['content' => $data_page, 'categories' => $categories, 'title_page' => 'Главная', 'class' => 'container']);
 print($data_layout);
 ?>
