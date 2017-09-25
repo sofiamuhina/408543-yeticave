@@ -9,7 +9,7 @@
   </nav>
   <div class="container">
     <section class="lots">
-      <h2>Результаты поиска по запросу «<span>Union</span>»</h2>
+      <h2>Результаты поиска по запросу «<span><?=$query; ?></span>»</h2>
       <ul class="lots__list">
       
        <?php foreach ($lots as $lot => $value) : ?>
