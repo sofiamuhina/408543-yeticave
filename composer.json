@@ -1,6 +1,11 @@
 {
-    "name": "yeticave",
-    "description": "Личный проект «YetiCave» от HTML Academy",
-    "type": "project",
+    "name": "admin/yeti",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Sofia Muhina",
+            "email": "sofiamuhina54@gmail.com"
+        }
+    ],
     "require": {}
 }

@@ -14,6 +14,5 @@ $categories = db_select($connect, 'SELECT * FROM categories');
 
 $lots = db_select($connect, 'SELECT l.id FROM lots l JOIN categories c ON l.id_category = c.id WHERE time_close>?', ['time_close' => date('Y-m-d', time())]);
 
-
 $users = db_select($connect, 'SELECT *  FROM users');
 ?>
