@@ -62,7 +62,7 @@
                             <tr class="history__item">
                                 <td class="history__name"><?=$bet['name']; ?></td>
                                 <td class="history__price"><?=$bet['price']; ?>р</td>
-                                <td class="history__time"><?php print(time_bet($bet['time_set'])); ?></td>
+                                <td class="history__time"><?php print(time_bet(strtotime($bet['time_set']))); ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </table>

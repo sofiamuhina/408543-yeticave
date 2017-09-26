@@ -34,7 +34,7 @@
                                 <span class="lot__cost"><?=$value['price_start']; ?><b class="rub">р</b></span>
                             </div>
                             <div class="lot__timer timer">
-                                <?=$lot_time_remaining;?>
+                                <?php print(time_remaining($value['time_close']));?>
                             </div>
                         </div>
                     </div>
@@ -42,3 +42,4 @@
             <?php endforeach; ?>
         </ul>
     </section>
+    <?=$pagination; ?>

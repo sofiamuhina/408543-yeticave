@@ -4,25 +4,21 @@ require ('mysql_helper.php');
 require ('init.php');
 session_start();
 
-// устанавливаем часовой пояс в Московское время
-date_default_timezone_set('Europe/Moscow');
+$pagination = '';
+$page_cur = $_GET['page'] ?? 1;
+$lot_on_page = 3;
 
-// записать в эту переменную оставшееся время в этом формате (ЧЧ:ММ)
-$lot_time_remaining = "00:00";
+$count_lot = count($lots);
+$count_pages = ceil($count_lot/$lot_on_page);
+$offset = ($page_cur - 1)*$lot_on_page;
+$pages = range(1, $count_pages);
 
-// временная метка для полночи следующего дня
-$tomorrow = strtotime('tomorrow midnight');
+$choose_lots = db_select($connect, 'SELECT name_lot, price_start, price_cur, img, name_cat, time_close, l.id FROM lots l JOIN categories c ON l.id_category = c.id WHERE time_close>? LIMIT ? OFFSET ?', ['time_close' => date('Y-m-d', time()), 'limit' => $lot_on_page, 'offset' => $offset ]);
 
-// временная метка для настоящего времени
-$now = strtotime('now');
-
-// далее нужно вычислить оставшееся время до начала следующих суток и записать его в переменную $lot_time_remaining
-// ...
-
-$time_zone = date('Z'); 
-$lot_time_remaining = date("H.i", ($tomorrow - $now - $time_zone));
-
-$data_page = get_template ('index', ['categories' => $categories, 'lots' => $lots, 'lot_time_remaining' => $lot_time_remaining ]);
+if ($count_pages > 1) {
+    $pagination = get_template ('pagination', ['pages' => $pages, 'page_cur' => $page_cur]);
+};
+$data_page = get_template ('index', ['categories' => $categories, 'lots' => $choose_lots, 'pagination' => $pagination]);
 $data_layout = get_template ('layout', ['content' => $data_page, 'categories' => $categories, 'title_page' => 'Главная', 'class' => 'container']);
 print($data_layout);
 ?>
