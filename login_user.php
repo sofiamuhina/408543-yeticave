@@ -2,6 +2,7 @@
 require ('functions.php');
 require ('mysql_helper.php');
 require ('init.php');
+require_once 'vendor/autoload.php';
 session_start();
 $verify = true;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

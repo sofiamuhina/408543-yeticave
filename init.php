@@ -1,5 +1,5 @@
 <?php
-
+require_once 'vendor/autoload.php';
 $connect = mysqli_connect("localhost", "root", "","yeti");
 
 if ($connect == false) {

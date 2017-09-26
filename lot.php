@@ -2,6 +2,7 @@
 require ('functions.php');
 require ('mysql_helper.php');
 require ('init.php');
+require_once 'vendor/autoload.php';
 session_start();
 $lot_item = [];
 if (isset($_GET['id'])) {
