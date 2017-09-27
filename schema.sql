@@ -12,7 +12,7 @@ CREATE TABLE lots (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     name_lot CHAR(128),
     time_create DATETIME,
-    time_close DATE,
+    time_close DATETIME,
     description TEXT,
     img CHAR(128),
     price_start INT UNSIGNED,

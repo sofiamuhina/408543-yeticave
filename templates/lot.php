@@ -31,7 +31,7 @@
                 <?php if ($add_bet == true) : ?>
                     <div class="lot-item__state">
                         <div class="lot-item__timer timer">
-                            10:54:12
+                            <?php print(time_remaining($lot_item['time_close']));?>
                         </div>
                         <div class="lot-item__cost-state">
                             <div class="lot-item__rate">

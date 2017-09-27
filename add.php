@@ -42,8 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $validate = true;
         $name_lot = htmlspecialchars($_POST['lot-name']);
         $desc_lot = htmlspecialchars($_POST['message']);
-        $date_close = date('Y-m-d', strtotime($_POST['lot-date']));
-        $date_create = date('Y-m-d');
+        $date_close = date('Y-m-d H:i:s', strtotime($_POST['lot-date']));
+        $date_create = date('Y-m-d H:i:s');
         
         foreach($categories as $key => $value) {
             if ($value['name_cat'] == $_POST['category']) {

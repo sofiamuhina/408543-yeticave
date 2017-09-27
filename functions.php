@@ -121,8 +121,8 @@ function time_remaining($time) {
     date_default_timezone_set('Europe/Moscow');
     $now = strtotime('now');
     $time = strtotime($time);
-    $time_zone = date('Z'); 
-    $lot_time_remaining = date("H.i", ($time - $now - $time_zone));
+    $time_zone = strtotime(date('Z')); 
+    $lot_time_remaining = date("H:i:s", ($time - $now - $time_zone));
     return $lot_time_remaining;
 };
 ?>
