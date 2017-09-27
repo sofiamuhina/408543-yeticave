@@ -2,11 +2,18 @@
 require ('functions.php');
 require ('mysql_helper.php');
 require ('init.php');
+require ('getwinner.php');
 require_once 'vendor/autoload.php';
 session_start();
 
 $get_bets = [];
 $get_bets = db_select($connect, 'SELECT * FROM bets JOIN lots ON id_lot = lots.id WHERE id_user = ?', ['id_user' => $_SESSION['user']['id']]);
+foreach ($get_bets as $bet => $value) {
+    $bet = array ('is_win' => false);
+    if ($value['id_winner'] == $_SESSION['user']['id']) {
+        $value['is_win'] = true;
+    };
+};
 
 if (isset($_SESSION['user'])) {
     $data_page = get_template ('user_lots', ['categories' => $categories, 'bets' => $get_bets, 'lots' => $lots ]);

@@ -7,5 +7,7 @@
             "email": "sofiamuhina54@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "swiftmailer/swiftmailer": "@stable"
+    }
 }

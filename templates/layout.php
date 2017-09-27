@@ -26,7 +26,7 @@
                     <img src="<?=$_SESSION['user']['avatar']; ?>" width="40" height="40" alt="Пользователь"> 
                 </div> 
                 <div class="user-menu__logged"> 
-                    <p><?=$_SESSION['user']['name']; ?></p> 
+                    <p><a href="/mybets.php"><?=$_SESSION['user']['name']; ?></a></p> 
                     <p><a href="/logout.php">Выйти</a></p> 
                 </div>
             <?php else : ?>

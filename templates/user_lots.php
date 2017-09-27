@@ -16,7 +16,7 @@
           <div class="rates__img">
             <img src="<?=$value['img'];?>" width="54" height="40" alt="<?=$value['name_lot']; ?>">
           </div>
-          <h3 class="rates__title"><a href="lot.php?id=<?=$value['id']; ?>"><?=$value['name_lot']; ?></a></h3>
+          <h3 class="rates__title"><a href="lot.php?id=<?=$value['id']; ?>"><?=$value['name_lot']; if ($value['is_win']) print('Вы победитель!!'); ?></a></h3>
         </td>
         <td class="rates__category">
           <?php print($value['category']);  ?>

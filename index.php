@@ -2,6 +2,7 @@
 require ('functions.php');
 require ('mysql_helper.php');
 require ('init.php');
+require ('getwinner.php');
 require_once 'vendor/autoload.php';
 session_start();
 
@@ -19,6 +20,7 @@ $choose_lots = db_select($connect, 'SELECT name_lot, price_start, price_cur, img
 if ($count_pages > 1) {
     $pagination = get_template ('pagination', ['pages' => $pages, 'page_cur' => $page_cur]);
 };
+//print_r($lot_without_winner);
 $data_page = get_template ('index', ['categories' => $categories, 'lots' => $choose_lots, 'pagination' => $pagination]);
 $data_layout = get_template ('layout', ['content' => $data_page, 'categories' => $categories, 'title_page' => 'Главная', 'class' => 'container']);
 print($data_layout);

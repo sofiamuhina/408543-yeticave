@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 if (isset($_SESSION['user'])) {
     if ($validate == true) {
-        $new_lot = db_insert($connect, 'lots', ['name_lot' => $name_lot, 'description' => $desc_lot, 'price_start' => $_POST['lot-rate'], 'price_cur' => $_POST['lot-rate'], 'bet_step' =>$_POST['lot-step'], 'time_close' => $date_close, 'time_create' => $date_create, 'img' => $file_url, 'id_category' => $id_category, 'id_creator' => $_SESSION['user']['id']]);
+        $new_lot = db_insert($connect, 'lots', ['name_lot' => $name_lot, 'description' => $desc_lot, 'price_start' => $_POST['lot-rate'], 'price_cur' => $_POST['lot-rate'], 'bet_step' =>$_POST['lot-step'], 'time_close' => $date_close, 'time_create' => $date_create, 'img' => $file_url, 'id_category' => $id_category, 'id_creator' => $_SESSION['user']['id'], 'id_winner' => 0]);
         header("Location: /lot.php?id=" .$new_lot );
     }
     else {
